@@ -97,4 +97,8 @@ book6 = Book('The Grand Design', 'Leonard Mlodinow','guk','2010')
 science_lib.add(book6)
 book7 = Book('The Grand Design', 'Leonard Mlodinow','guk','2016')
 science_lib.edit(book6,book7)
+<<<<<<< Updated upstream
 print(science_lib.exists('On the Origin of Species'))
+=======
+print(science_lib.exists('On the Origin of Species')  )
+>>>>>>> Stashed changes

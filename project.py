@@ -31,7 +31,7 @@ class Library:
             self.books_dict['release_date'].append(book.release_date)
         df = pd.DataFrame(self.books_dict)
                         
-    def to_csv(self,df):
+    def to_csv(self):
         df = pd.DataFrame(self.books_dict)
         df.to_csv('library.csv',sep='-', index=False)  
     
@@ -82,6 +82,17 @@ class Library:
                 return True
             else:
                 return False
+            
+def csv_to_lib(csvfile,name):
+        df = pd.read_csv(csvfile,sep='-')
+        books = []
+        for ind in range(len(df)):
+            
+            books.append(Book((df.iloc[ind,0]),(df.iloc[ind,1]),(df.iloc[ind,2]),(df.iloc[ind,3])))
+        books = tuple(books)
+        return Library(name,*books)
+
+
 # run
 book1 = Book('On the Origin of Species', 'Charles Darwin','akf','1859')
 book2 = Book('Cosmos', 'Carl Sagan','acf','1980')
@@ -97,8 +108,4 @@ book6 = Book('The Grand Design', 'Leonard Mlodinow','guk','2010')
 science_lib.add(book6)
 book7 = Book('The Grand Design', 'Leonard Mlodinow','guk','2016')
 science_lib.edit(book6,book7)
-<<<<<<< Updated upstream
-print(science_lib.exists('On the Origin of Species'))
-=======
-print(science_lib.exists('On the Origin of Species')  )
->>>>>>> Stashed changes
+csv_to_lib('library.csv','lib')

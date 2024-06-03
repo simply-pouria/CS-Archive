@@ -30,6 +30,9 @@ class Library:
             self.books_dict['keyword'].append(book.keyword)
             self.books_dict['release_date'].append(book.release_date)
         df = pd.DataFrame(self.books_dict)
+                        
+    def to_csv(self,df):
+        df = pd.DataFrame(self.books_dict)
         df.to_csv('library.csv',sep='-', index=False)  
     
     def add(self, book : Book):
@@ -72,18 +75,19 @@ class Library:
         new_df = pd.DataFrame(self.books_dict)
         new_df.to_csv('library.csv', sep='-', index=False)  
 
-    def exists(self, book : Book):
-         for ind in self.range(len(self.df)):
-            if self.df.iloc[ind, 0] == book.name:
+    def exists(self, name : str):
+         df = pd.DataFrame(self.books_dict)
+         for ind in range(len(df)):
+            if df.iloc[ind, 0] == name:
                 return True
             else:
                 return False
-
-
+# run
 book1 = Book('On the Origin of Species', 'Charles Darwin','akf','1859')
 book2 = Book('Cosmos', 'Carl Sagan','acf','1980')
 book3 = Book('The Selfish Gene', 'Richard Dawkin','csd','1976')
 science_lib = Library('sci', book1, book2, book3)
+science_lib.to_csv()
 book4 = Book('Silent Spring', 'Rachel Carson','auf','1962')
 science_lib.delete(book2)
 science_lib.delete(book3)
@@ -92,4 +96,5 @@ science_lib.add(book5)
 book6 = Book('The Grand Design', 'Leonard Mlodinow','guk','2010')
 science_lib.add(book6)
 book7 = Book('The Grand Design', 'Leonard Mlodinow','guk','2016')
-science_lib.edit(book6,book7)  
+science_lib.edit(book6,book7)
+print(science_lib.exists('On the Origin of Species'))

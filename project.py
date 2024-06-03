@@ -35,7 +35,7 @@ class Library:
         df = pd.DataFrame(self.books_dict)
         df.to_csv('library.csv',sep='-', index=False)  
     
-    def add(self, book : Book):
+    def add(self, book: Book):
     
         self.books_dict['name'].append(book.name)
         self.books_dict['author'].append(book.author)
@@ -50,7 +50,7 @@ class Library:
             if self.df.iloc[ind, 0] == book.name:
                 self.df.drop([ind])
 
-    def edit(self, book : Book):
+    def edit(self, book: Book):
         # delete the current book
         for ind in self.range(len(self.df)):
             if self.df.iloc[ind, 0] == book.name:

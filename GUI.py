@@ -119,24 +119,64 @@ def add_book():
     def add_book_cmd():
         pass  # should add a book to the dataframe and csv of the library also checking if it is not already there
 
+    # creating a window to get information
     root = tk.Tk()
-    root.title("Choose Book")
+    root.title("Add Book")
 
-    label = tk.Label(root,
-                     text="Enter the name of the book you want to add to the Library",
-                     height=3,
-                     bd=3,
-                     fg="black")
+    header = tk.Label(root,
+                      text="Enter the data of the new book",
+                      height=3,
+                      bd=3,
+                      fg="black",
+                      font=("Arial", 12))
 
-    entry = tk.Entry(root)
+    name_label = tk.Label(root,
+                          text="Name",
+                          height=3,
+                          bd=3,
+                          fg="black",
+                          font=("Arial", 8))
 
-    add_book_btn = tk.Button(root,
-                             text="Add this book to the library",
-                             command=add_book_cmd)
+    name = tk.Entry(root)
 
-    label.grid(column=0, row=0, padx=10, pady=10)
-    entry.grid(column=0, row=1, padx=10, pady=10)
-    add_book_btn.grid(column=0, row=2, padx=5, pady=5)
+    release_date_label = tk.Label(root,
+                                  text="Release Date",
+                                  height=3,
+                                  bd=3,
+                                  fg="black",
+                                  font=("Arial", 8))
+    release_date = tk.Entry(root)
+
+    authors_label = tk.Label(root,
+                             text="Authors",
+                             height=3,
+                             bd=3,
+                             fg="black",
+                             font=("Arial", 8))
+    authors = tk.Entry(root)
+    keyword_label = tk.Label(root,
+                             text="Keyword",
+                             height=3,
+                             bd=3,
+                             fg="black",
+                             font=("Arial", 8))
+    keyword = tk.Entry(root)
+
+    submit_btn = tk.Button(root,
+                           text="Submit Changes",
+                           command=add_book_cmd)
+
+    # placing UI elements using Grid layout manager
+    header.grid(column=0, row=0, padx=10, pady=10, columnspan=2)
+    name_label.grid(column=0, row=1, padx=10, pady=10)
+    name.grid(column=1, row=1, padx=10, pady=10)
+    release_date_label.grid(column=0, row=2, padx=10, pady=10)
+    release_date.grid(column=1, row=2, padx=10, pady=10)
+    authors_label.grid(column=0, row=3, padx=10, pady=10)
+    authors.grid(column=1, row=3, padx=10, pady=10)
+    keyword_label.grid(column=0, row=4, padx=10, pady=10)
+    keyword.grid(column=1, row=4, padx=10, pady=10)
+    submit_btn.grid(column=0, row=5, padx=5, pady=5, columnspan=2)
 
 
 def del_book():

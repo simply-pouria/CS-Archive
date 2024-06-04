@@ -26,56 +26,41 @@ class Library:
     def __init__(self, lib_name: str, *args: Book):
         self.lib_name = lib_name
         self.books = list(args)
-        self.books_dict = {'name': [], 'author': [], 'keyword': [], 'release_date': []}
+        books_dict = {'name': [], 'author': [], 'keyword': [], 'release_date': []}
         for book in self.books:
-            self.books_dict['name'].append(book.name)
-            self.books_dict['author'].append(book.author)
-            self.books_dict['keyword'].append(book.keyword)
-            self.books_dict['release_date'].append(book.release_date)
-        df = pd.DataFrame(self.books_dict)
+            books_dict['name'].append(book.name)
+            books_dict['author'].append(book.author)
+            books_dict['keyword'].append(book.keyword)
+            books_dict['release_date'].append(book.release_date)
+        self.df = pd.DataFrame(books_dict)
 
     def save_csv(self):
-        df = pd.DataFrame(self.books_dict)
-        df.to_csv(f"{os.getcwd()}\\csv_files\\{self.lib_name}", sep=' ', index=False)
+        
+        self.df.to_csv(f"{os.getcwd()}\\csv_files\\{self.lib_name}", sep=' ', index=False)
 
     def add(self, book: Book):
-
-        self.books_dict['name'].append(book.name)
-        self.books_dict['author'].append(book.author)
-        self.books_dict['keyword'].append(book.keyword)
-        self.books_dict['release_date'].append(book.release_date)
-        df = pd.DataFrame(self.books_dict)
+        self.df.loc[len(self.df.index)] = [book.name, book.author, book.keyword, book.release_date]
+        
         self.save_csv()
 
     def delete(self, book: Book):
-        df = pd.DataFrame(self.books_dict)
-        for ind in range(len(df)):
-            if df.iloc[ind, 0] == book.name:
-                self.books_dict['name'].remove(book.name)
-                self.books_dict['author'].remove(book.author)
-                self.books_dict['keyword'].remove(book.keyword)
-                self.books_dict['release_date'].remove(book.release_date)
+        
+        for ind in range(len(self.df)):
+            if self.df.iloc[ind, 0] == book.name:
+                self.df.drop([book.name, book.author, book.keyword, book.release_date], inplace = True)
 
                 print('The book is deleted')
-        new_df = pd.DataFrame(self.books_dict)
+        
         self.save_csv()
 
-    def edit(self, oldbook: Book, newbook: Book):
+    def edit(self, olbook: Book, newbook : Book):
         # delete the current book
-        df = pd.DataFrame(self.books_dict)
-        for ind in range(len(df)):
-            if df.iloc[ind, 0] == newbook.name:
-                self.books_dict['name'].remove(oldbook.name)
-                self.books_dict['author'].remove(oldbook.author)
-                self.books_dict['keyword'].remove(oldbook.keyword)
-                self.books_dict['release_date'].remove(oldbook.release_date)
-
-                # add the new book
-        self.books_dict['name'].append(newbook.name)
-        self.books_dict['author'].append(newbook.author)
-        self.books_dict['keyword'].append(newbook.keyword)
-        self.books_dict['release_date'].append(newbook.release_date)
-        new_df = pd.DataFrame(self.books_dict)
+       
+        row_index = self.df.loc[self.df['name'] == newbook.name].index[0]
+        self.df.loc[row_index, 'author'] = newbook.author
+        self.df.loc[row_index, 'keyword'] =newbook.keyword
+        self.df.loc[row_index, 'release_date'] = newbook.release_date
+        
         self.save_csv()
 
     def exists(self, name: str):
@@ -97,18 +82,18 @@ def csv_to_lib(csvfile, name):
 
 
 # run
-# book1 = Book('On the Origin of Species', 'Charles Darwin', 'akf', '1859')
-# book2 = Book('Cosmos', 'Carl Sagan', 'acf', '1980')
-# book3 = Book('The Selfish Gene', 'Richard Dawkin', 'csd', '1976')
-# science_lib = Library('sci', book1, book2, book3)
-# science_lib.to_csv()
-# book4 = Book('Silent Spring', 'Rachel Carson', 'auf', '1962')
-# science_lib.delete(book2)
-# science_lib.delete(book3)
-# book5 = Book('The Elegant Universe', 'Brian Greene', 'auk', '1999')
-# science_lib.add(book5)
-# book6 = Book('The Grand Design', 'Leonard Mlodinow', 'guk', '2010')
-# science_lib.add(book6)
-# book7 = Book('The Grand Design', 'Leonard Mlodinow', 'guk', '2016')
+book1 = Book('On the Origin of Species', 'Charles Darwin', 'akf', '1859')
+book2 = Book('Cosmos', 'Carl Sagan', 'acf', '1980')
+book3 = Book('The Selfish Gene', 'Richard Dawkin', 'csd', '1976')
+science_lib = Library('sci', book1, book2, book3)
+
+book4 = Book('Silent Spring', 'Rachel Carson', 'auf', '1962')
+science_lib.delete(book2)
+science_lib.delete(book3)
+book5 = Book('The Elegant Universe', 'Brian Greene', 'auk', '1999')
+science_lib.add(book5)
+book6 = Book('The Grand Design', 'Leonard Mlodinow', 'guk', '2010')
+science_lib.add(book6)
+book7 = Book('The Grand Design', 'Leonard Mlodinow', 'guk', '2016')
 # science_lib.edit(book6, book7)
 # csv_to_lib('library.csv', 'lib')

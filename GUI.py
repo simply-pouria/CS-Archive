@@ -6,6 +6,8 @@ def f():
     pass
 
 
+#### MENUS ###
+# each menu is implemented as a function so that switching windows is easier
 def main_menu():
     root = tk.Tk()
     root.title("Main Menu")

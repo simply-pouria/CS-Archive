@@ -3,7 +3,7 @@ import os
 
 
 class Book:
-    def __init__(self, name: str, author: str, keyword: str, release_date: str):
+    def __init__(self, name: str, author: str, keyword: str, release_date: str) -> None:
         self.name = name
         self.author = author
         self.keyword = keyword
@@ -22,11 +22,11 @@ class Book:
         self.release_date = release_date
 
 
-libraries = {}
+library_dicts = {}
 
 
 class Library:
-    def __init__(self, lib_name: str, *args: Book):
+    def __init__(self, lib_name: str, *args: Book) -> None:
         self.lib_name = lib_name
         self.books = list(args)
         books_dict = {'name': [], 'author': [], 'keyword': [], 'release_date': []}
@@ -36,25 +36,25 @@ class Library:
             books_dict['keyword'].append(book.keyword)
             books_dict['release_date'].append(book.release_date)
         self.df = pd.DataFrame(books_dict)
-        libraries[lib_name] = self
+        library_dicts[lib_name] = self
 
-    def save_csv(self):
+    def save_csv(self)-> None:
 
         self.df.to_csv(f"{os.getcwd()}\\csv_files\\{self.lib_name}", sep=' ', index=False)
 
-    def add(self, book: Book):
+    def add(self, book: Book)-> None:
         self.df.loc[len(self.df.index)] = [book.name, book.author, book.keyword, book.release_date]
 
         self.save_csv()
 
-    def delete_book(self, book: Book):
+    def delete_book(self, book: Book) -> None:
 
        data_with_index = self.df.set_index("name")
        data_with_index = data_with_index.drop(book.name)
        print('The book is deleted')
        self.save_csv()
 
-    def edit(self, newbook: Book):
+    def edit(self, newbook: Book) -> None:
 
         row_index = self.df.loc[self.df['name'] == newbook.name].index[0]
         self.df.loc[row_index, 'author'] = newbook.author
@@ -71,7 +71,7 @@ class Library:
             else:
                 return False
             
-    def del_library(self,lib_name):
+    def del_library(self,lib_name) -> None:
         os.remove(f"{os.getcwd()}\\csv_files\\{self.lib_name}") 
         print("file deleted") 
         del library_dicts[lib_name]

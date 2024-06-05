@@ -33,6 +33,7 @@ def show_lib_cmd(lib_name: str, df: pd.DataFrame) -> None:
             rt.title('Library Data')
 
 
+
 def add_book(library : Library, name : str, author : str, keyword : str, release_date : str) -> None:
     book = Book(name, author, keyword, release_date)
     library.add(book)
@@ -45,7 +46,6 @@ def edit_book(library : Library, name : str, author : str, keyword : str, releas
 
 def delete_book(library : Library, name : str, author : str, keyword : str, release_date : str) -> None:
     book = Book(name, author, keyword, release_date)
-    library.delete_book(book)
 
 
 

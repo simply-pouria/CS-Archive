@@ -2,6 +2,7 @@ import os
 from tkinter import messagebox
 import tkinter as tk
 from utilities import Library
+import utilities
 import pandas as pd
 
 
@@ -15,6 +16,12 @@ def add_lib_cmd(lib_name: str) -> None:
     lib = Library(lib_name)
     lib.save_csv()
     messagebox.showinfo("Successful", "The empty library has been added")
+
+def delete_lib(lib_name: str) -> None:
+     for library in os.listdir(f'{os.getcwd()}\\csv_files'):
+        if lib_name == library:
+            os.remove(f"{os.getcwd()}\\csv_files\\{lib_name}") 
+            del utilities.library_dicts[lib_name]
 
 
 def show_lib_cmd(lib_name: str, df: pd.DataFrame) -> None:

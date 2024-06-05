@@ -3,7 +3,7 @@ import os
 
 
 class Book:
-    def __init__(self, name: str, author: str, keyword: str, release_date: str):
+    def __init__(self, name: str, author: str, keyword: str, release_date: str) -> None:
         self.name = name
         self.author = author
         self.keyword = keyword
@@ -22,11 +22,11 @@ class Book:
         self.release_date = release_date
 
 
-libraries = {}
+library_dicts = {}
 
 
 class Library:
-    def __init__(self, lib_name: str, *args: Book):
+    def __init__(self, lib_name: str, *args: Book) -> None:
         self.lib_name = lib_name
         self.books = list(args)
         books_dict = {'name': [], 'author': [], 'keyword': [], 'release_date': []}
@@ -36,29 +36,25 @@ class Library:
             books_dict['keyword'].append(book.keyword)
             books_dict['release_date'].append(book.release_date)
         self.df = pd.DataFrame(books_dict)
-        libraries[lib_name] = self
+        library_dicts[lib_name] = self
 
-    def save_csv(self):
+    def save_csv(self)-> None:
 
         self.df.to_csv(f"{os.getcwd()}\\csv_files\\{self.lib_name}", sep=' ', index=False)
 
-    def add(self, book: Book):
+    def add(self, book: Book)-> None:
         self.df.loc[len(self.df.index)] = [book.name, book.author, book.keyword, book.release_date]
 
         self.save_csv()
 
-    def delete_book(self, book: Book):
+    def delete_book(self, book: Book) -> None:
 
-        for ind in range(len(self.df)):
-            if self.df.iloc[ind, 0] == book.name:
-                self.df.drop([book.name, book.author, book.keyword, book.release_date], inplace=True)
+       data_with_index = self.df.set_index("name")
+       data_with_index = data_with_index.drop(book.name)
+       print('The book is deleted')
+       self.save_csv()
 
-                print('The book is deleted')
-
-        self.save_csv()
-
-    def edit(self, newbook: Book):
-        # delete the current book
+    def edit(self, newbook: Book) -> None:
 
         row_index = self.df.loc[self.df['name'] == newbook.name].index[0]
         self.df.loc[row_index, 'author'] = newbook.author
@@ -74,7 +70,12 @@ class Library:
                 return True
             else:
                 return False
-
+            
+    def del_library(self,lib_name) -> None:
+        os.remove(f"{os.getcwd()}\\csv_files\\{self.lib_name}") 
+        print("file deleted") 
+        del library_dicts[lib_name]
+        print("file deleted from library dictionary") 
 
 def csv_to_lib(csvfile, name) -> Library:
     df = pd.read_csv(csvfile, sep=' ')
@@ -90,7 +91,7 @@ def csv_to_lib(csvfile, name) -> Library:
 # book2 = Book('Cosmos', 'Carl Sagan', 'acf', '1980')
 # book3 = Book('The Selfish Gene', 'Richard Dawkin', 'csd', '1976')
 # science_lib = Library('sci', book1, book2, book3)
-#
+
 # book4 = Book('Silent Spring', 'Rachel Carson', 'auf', '1962')
 # science_lib.delete(book2)
 # science_lib.delete(book3)
@@ -99,5 +100,6 @@ def csv_to_lib(csvfile, name) -> Library:
 # book6 = Book('The Grand Design', 'Leonard Mlodinow', 'guk', '2010')
 # science_lib.add(book6)
 # book7 = Book('The Grand Design', 'Leonard Mlodinow', 'guk', '2016')
-# science_lib.edit(book6, book7)
-# csv_to_lib('library.csv', 'lib')
+# science_lib.edit(book7)
+# science_lib.del_library('sci')
+# print(library_dicts)

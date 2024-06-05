@@ -44,5 +44,6 @@ def edit_book_cmd(library: Library, name: str, author: str, keyword: str, releas
     library.edit(book)
 
 
-def delete_book_cmd(library: Library, name: str, author: str, keyword: str, release_date: str) -> None:
-    book = Book(name, author, keyword, release_date)
+def delete_book_cmd(library: Library, name: str) -> None:
+     data_with_index = library.df.set_index("name")
+     data_with_index = data_with_index.drop(name)

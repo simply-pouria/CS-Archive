@@ -4,6 +4,7 @@ import tkinter as tk
 from utilities import Library
 import pandas as pd
 
+
 # functions in this file are commands of the buttons and used to interact with the dataframe.
 def add_lib_cmd(lib_name: str) -> None:
 
@@ -23,6 +24,8 @@ def show_lib_cmd(lib_name: str, df: pd.DataFrame) -> None:
             rt = tk.Tk()
             rt.geometry('300x300')
             rt.title('Library Data')
+
+            tk.Label(rt, text=df.loc[:, :], font=("Arial", 20, "bold")).pack()
 
 
 

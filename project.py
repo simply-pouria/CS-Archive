@@ -21,6 +21,7 @@ class Book:
     def edit_release_date(self, release_date: str):
         self.release_date = release_date
 
+library_dicts = {}
 
 class Library:
     def __init__(self, lib_name: str, *args: Book):
@@ -33,6 +34,7 @@ class Library:
             books_dict['keyword'].append(book.keyword)
             books_dict['release_date'].append(book.release_date)
         self.df = pd.DataFrame(books_dict)
+        library_dicts[lib_name] = self
 
     def save_csv(self):
         

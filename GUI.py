@@ -156,7 +156,7 @@ def choose_lib_menu():
 
     def del_book():
         def del_book_cmd():
-            pass  # should remove a book from the dataframe and csv of the library also checking if it is there
+            interactions.delete_book_cmd(lib_name=lib_name.get(), book_name=book_name.get())
 
         root_del = tk.Tk()
         root_del.title("Choose Book")
@@ -167,15 +167,15 @@ def choose_lib_menu():
                          bd=3,
                          fg="black")
 
-        entry = tk.Entry(root_del)
+        book_name = tk.Entry(root_del)
 
-        add_book_btn = tk.Button(root_del,
-                                 text="Remove this book from the library",
-                                 command=del_book_cmd)
+        delete_book_btn = tk.Button(root_del,
+                                    text="Remove this book from the library",
+                                    command=del_book_cmd)
 
         label.grid(column=0, row=0, padx=10, pady=10)
-        entry.grid(column=0, row=1, padx=10, pady=10)
-        add_book_btn.grid(column=0, row=2, padx=5, pady=5)
+        book_name.grid(column=0, row=1, padx=10, pady=10)
+        delete_book_btn.grid(column=0, row=2, padx=5, pady=5)
 
     def show_book():
         def show_book_cmd():

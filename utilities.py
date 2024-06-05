@@ -27,6 +27,7 @@ libraries = {}
 
 class Library:
     def __init__(self, lib_name: str, *args: Book) -> None:
+
         self.lib_name = lib_name
         self.books = list(args)
         books_dict = {'name': [], 'author': [], 'keyword': [], 'release_date': []}
@@ -47,12 +48,13 @@ class Library:
 
         self.save_csv()
 
-    def delete_book(self, book: Book) -> None:
+    def delete_book(self, book_name: str) -> None:
 
         data_with_index = self.df.set_index("name")
         data_with_index = data_with_index.drop(book.name)
 
         self.save_csv()
+
     def edit(self, newbook: Book) -> None:
 
         row_index = self.df.loc[self.df['name'] == newbook.name].index[0]

@@ -2,7 +2,6 @@ import tkinter as tk
 import interactions
 from GUI_utilities import WindowSwitchButton as Wsb
 from interactions import *
-import pandas as pd
 from utilities import libraries
 
 def f():
@@ -47,8 +46,11 @@ def mod_lib_menu():
 
     def show_lib_cmd():
         lib_name = entry.get()
-
         interactions.show_lib_cmd(lib_name=lib_name, df=libraries[lib_name].df)
+
+    def delete_lib_cmd():
+        lib_name = entry.get()
+        interactions.delete_lib_cmd(lib_name=lib_name)
 
     label = tk.Label(root,
                      text="Enter the name of the Library to add, remove or show it:",
@@ -64,7 +66,7 @@ def mod_lib_menu():
 
     del_lib_btn = tk.Button(root,
                             text="Remove this Library",
-                            command=f)
+                            command=delete_lib_cmd)
 
     show_lib_btn = tk.Button(root,
                              text="Show this Library",
@@ -85,6 +87,8 @@ def mod_lib_menu():
 
 
 def choose_lib_menu():
+
+
     root = tk.Tk()
     root.title("Choosing Library")
 
@@ -98,15 +102,15 @@ def choose_lib_menu():
 
     add_lib_btn = tk.Button(root,
                             text="Add to This Library",
-                            command=add_book)
+                            command=add_book_cmd)
 
     del_lib_btn = tk.Button(root,
                             text="Remove from This Library",
-                            command=del_book)
+                            command=delete_book_cmd)
 
     edit_lib_btn = tk.Button(root,
                              text="Edit books From This Library",
-                             command=edit_book)
+                             command=edit_book_cmd)
 
     show_lib_btn = tk.Button(root,
                              text="Show from This Library",

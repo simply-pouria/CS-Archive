@@ -22,7 +22,7 @@ class Book:
         self.release_date = release_date
 
 
-library_dicts = {}
+libraries = {}
 
 
 class Library:
@@ -36,23 +36,23 @@ class Library:
             books_dict['keyword'].append(book.keyword)
             books_dict['release_date'].append(book.release_date)
         self.df = pd.DataFrame(books_dict)
-        library_dicts[lib_name] = self
+        libraries[lib_name] = self
 
-    def save_csv(self)-> None:
+    def save_csv(self) -> None:
 
         self.df.to_csv(f"{os.getcwd()}\\csv_files\\{self.lib_name}", sep=' ', index=False)
 
-    def add(self, book: Book)-> None:
+    def add(self, book: Book) -> None:
         self.df.loc[len(self.df.index)] = [book.name, book.author, book.keyword, book.release_date]
 
         self.save_csv()
 
     def delete_book(self, book: Book) -> None:
 
-       data_with_index = self.df.set_index("name")
-       data_with_index = data_with_index.drop(book.name)
-     
-       self.save_csv()
+        data_with_index = self.df.set_index("name")
+        data_with_index = data_with_index.drop(book.name)
+
+        self.save_csv()
 
     def edit(self, newbook: Book) -> None:
 
@@ -70,12 +70,13 @@ class Library:
                 return True
             else:
                 return False
-            
-    def del_library(self,lib_name) -> None:
-        os.remove(f"{os.getcwd()}\\csv_files\\{self.lib_name}") 
-        print("file deleted") 
-        del library_dicts[lib_name]
-        print("file deleted from library dictionary") 
+
+    def del_library(self, lib_name) -> None:
+        os.remove(f"{os.getcwd()}\\csv_files\\{self.lib_name}")
+        print("file deleted")
+        del libraries[lib_name]
+        print("file deleted from library dictionary")
+
 
 def csv_to_lib(csvfile, name) -> Library:
     df = pd.read_csv(csvfile, sep=' ')
@@ -84,7 +85,6 @@ def csv_to_lib(csvfile, name) -> Library:
         books.append(Book((df.iloc[ind, 0]), (df.iloc[ind, 1]), (df.iloc[ind, 2]), (df.iloc[ind, 3])))
     books = tuple(books)
     return Library(name, *books)
-
 
 # run
 # book1 = Book('On the Origin of Species', 'Charles Darwin', 'akf', '1859')

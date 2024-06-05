@@ -1,8 +1,7 @@
 import tkinter as tk
 import interactions
-from GUI_utilities import WindowSwitchButton as Wsb
-from interactions import *
 from utilities import libraries
+from GUI_utilities import WindowSwitchButton as Wsb
 
 
 def f():
@@ -180,7 +179,7 @@ def choose_lib_menu():
 
     def show_book():
         def show_book_cmd():
-            pass  # should retrieve a book from the dataframe and csv of the library also checking if it is there
+            interactions.show_book_cmd(lib_name=lib_name.get(), book_name=book_name.get())
 
         root_show = tk.Tk()
         root_show.title("Choose Book")
@@ -191,14 +190,14 @@ def choose_lib_menu():
                          bd=3,
                          fg="black")
 
-        entry = tk.Entry(root_show)
+        book_name = tk.Entry(root_show)
 
         add_book_btn = tk.Button(root_show,
                                  text="show this book from the library",
                                  command=show_book_cmd)
 
         label.grid(column=0, row=0, padx=10, pady=10)
-        entry.grid(column=0, row=1, padx=10, pady=10)
+        book_name.grid(column=0, row=1, padx=10, pady=10)
         add_book_btn.grid(column=0, row=2, padx=5, pady=5)
 
     def edit_book():

@@ -53,7 +53,6 @@ class Library:
         data_with_index = data_with_index.drop(book.name)
 
         self.save_csv()
-
     def edit(self, newbook: Book) -> None:
 
         row_index = self.df.loc[self.df['name'] == newbook.name].index[0]

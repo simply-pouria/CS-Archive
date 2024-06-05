@@ -23,4 +23,4 @@ for i in range(len(df)):
     print(df.loc[i, "Name"], df.loc[i, "Age"])
 
 print(df.loc[:, :])
-print(df.loc[:, :])
+print(df.loc[2, :])

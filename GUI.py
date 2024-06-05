@@ -1,5 +1,8 @@
 import tkinter as tk
+
+import interactions
 from GUI_utilities import WindowSwitchButton as Wsb
+from interactions import *
 
 
 def f():
@@ -38,6 +41,10 @@ def mod_lib_menu():
     root = tk.Tk()
     root.title("Library Management")
 
+    def add_lib_cmd():
+        lib_name = entry.get()
+        interactions.add_lib_cmd(lib_name)
+
     label = tk.Label(root,
                      text="Enter the name of the Library to add, remove or show it:",
                      height=3,
@@ -48,7 +55,7 @@ def mod_lib_menu():
 
     add_lib_btn = tk.Button(root,
                             text="Add this Library",
-                            command=f)
+                            command=add_lib_cmd)
 
     del_lib_btn = tk.Button(root,
                             text="Remove this Library",

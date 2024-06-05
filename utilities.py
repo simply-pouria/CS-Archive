@@ -21,7 +21,9 @@ class Book:
     def edit_release_date(self, release_date: str):
         self.release_date = release_date
 
-library_dicts = {}
+
+libraries = {}
+
 
 class Library:
     def __init__(self, lib_name: str, *args: Book):
@@ -34,7 +36,7 @@ class Library:
             books_dict['keyword'].append(book.keyword)
             books_dict['release_date'].append(book.release_date)
         self.df = pd.DataFrame(books_dict)
-        library_dicts[lib_name] = self
+        libraries[lib_name] = self
 
     def save_csv(self):
 
@@ -45,7 +47,7 @@ class Library:
 
         self.save_csv()
 
-    def delete(self, book: Book):
+    def delete_book(self, book: Book):
 
         for ind in range(len(self.df)):
             if self.df.iloc[ind, 0] == book.name:
@@ -65,7 +67,7 @@ class Library:
 
         self.save_csv()
 
-    def exists(self, name: str):
+    def exists(self, name: str) -> bool:
 
         for ind in range(len(self.df)):
             if self.df.iloc[ind, 0] == name:
@@ -74,7 +76,7 @@ class Library:
                 return False
 
 
-def csv_to_lib(csvfile, name):
+def csv_to_lib(csvfile, name) -> Library:
     df = pd.read_csv(csvfile, sep=' ')
     books = []
     for ind in range(len(df)):

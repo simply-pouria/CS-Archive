@@ -12,6 +12,7 @@ def add_lib_cmd(lib_name: str) -> None:
     for library in os.listdir(f'{os.getcwd()}\\csv_files'):
         if lib_name == library:
             messagebox.showerror("Repetitive Name", "The library name must be unique")
+            return
 
     lib = Library(lib_name)
     lib.save_csv()
@@ -29,7 +30,6 @@ def show_lib_cmd(lib_name: str, df: pd.DataFrame) -> None:
     for library in os.listdir(f'{os.getcwd()}\\csv_files'):
         if lib_name == library:
             rt = tk.Tk()
-            rt.geometry('300x300')
             rt.title('Library Data')
 
             tk.Label(rt, text=df.loc[:, :], font=("Arial", 20, "bold")).pack()

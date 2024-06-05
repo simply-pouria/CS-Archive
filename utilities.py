@@ -22,7 +22,7 @@ class Book:
         self.release_date = release_date
 
 
-library_dicts = {}
+libraries = {}
 
 
 class Library:
@@ -36,9 +36,9 @@ class Library:
             books_dict['keyword'].append(book.keyword)
             books_dict['release_date'].append(book.release_date)
         self.df = pd.DataFrame(books_dict)
-        library_dicts[lib_name] = self
+        libraries[lib_name] = self
 
-    def save_csv(self)-> None:
+    def save_csv(self) -> None:
 
         self.df.to_csv(f"{os.getcwd()}\\csv_files\\{self.lib_name}", sep=' ', index=False)
 

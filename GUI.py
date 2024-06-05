@@ -3,7 +3,7 @@ import interactions
 from GUI_utilities import WindowSwitchButton as Wsb
 from interactions import *
 import pandas as pd
-import utilities
+from utilities import libraries
 
 def f():
     pass
@@ -48,7 +48,7 @@ def mod_lib_menu():
     def show_lib_cmd():
         lib_name = entry.get()
 
-        interactions.show_lib_cmd(lib_name=lib_name, df=utilities.libraries[lib_name])
+        interactions.show_lib_cmd(lib_name=lib_name, df=libraries[lib_name])
 
     label = tk.Label(root,
                      text="Enter the name of the Library to add, remove or show it:",

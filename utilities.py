@@ -22,7 +22,7 @@ class Book:
         self.release_date = release_date
 
 
-libraries = {}
+library_dicts = {}
 
 
 class Library:
@@ -36,9 +36,9 @@ class Library:
             books_dict['keyword'].append(book.keyword)
             books_dict['release_date'].append(book.release_date)
         self.df = pd.DataFrame(books_dict)
-        libraries[lib_name] = self
+        library_dicts[lib_name] = self
 
-    def save_csv(self) -> None:
+    def save_csv(self)-> None:
 
         self.df.to_csv(f"{os.getcwd()}\\csv_files\\{self.lib_name}", sep=' ', index=False)
 
@@ -51,7 +51,7 @@ class Library:
 
        data_with_index = self.df.set_index("name")
        data_with_index = data_with_index.drop(book.name)
-       print('The book is deleted')
+     
        self.save_csv()
 
     def edit(self, newbook: Book) -> None:

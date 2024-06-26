@@ -51,7 +51,7 @@ class Library:
     def delete_book(self, book_name: str) -> None:
 
         data_with_index = self.df.set_index("name")
-        data_with_index = data_with_index.drop(book.name)
+        data_with_index = data_with_index.drop(book_name)
 
         self.save_csv()
 

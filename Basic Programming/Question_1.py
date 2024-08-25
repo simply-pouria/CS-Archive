@@ -1,4 +1,3 @@
-# Pouria Moradpour  4024023040
 
 
 #  I'm using the Prime Factorization by Division Method here

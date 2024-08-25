@@ -1,4 +1,4 @@
-# Pouria Moradpour 4024023040
+
 
 
 def permutation_generator(lst: list, start: int, end: int, permutations: list) -> list:  # this generates all n!

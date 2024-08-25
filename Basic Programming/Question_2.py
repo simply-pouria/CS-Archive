@@ -1,4 +1,4 @@
-# Pouria Moradpour  4024023040
+
 
 
 def factorial(number: int) -> int:

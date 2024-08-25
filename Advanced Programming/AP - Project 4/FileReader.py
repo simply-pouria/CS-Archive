@@ -1,4 +1,3 @@
-# Pouria Moradpour 4024023040
 
 import os
 import pandas as pd

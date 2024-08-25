@@ -1,4 +1,4 @@
-# Pouria Moradpour  4024023040
+
 
 
 from Question_1 import prime_factorize  # this is needed from question 1

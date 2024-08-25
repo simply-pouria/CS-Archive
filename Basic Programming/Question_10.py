@@ -1,4 +1,4 @@
-# Pouria Moradpour  4024023040
+
 
 
 def is_n_n(matrix: list) -> bool:  # checks if the provided matrix has an n*n form

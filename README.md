@@ -10,6 +10,7 @@ List of the courses:
 The Project is not so basic though... 
 
 (The algorithms used are not the most efficient ones available, but they get the job done *and this is not DSA*)
+- [Assignment Document](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Assignment%20Document.pdf)
 - [Project notes & Flowcharts](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Project-Notes.pdf)
 - [Question 1](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Question_1.py) - Prime Factorization
 - [Question 2](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Question_2.py) - Factorial Expansion

@@ -4,11 +4,7 @@ from utilities import libraries
 from GUI_utilities import WindowSwitchButton as Wsb
 
 
-def f():
-    pass
-
-
-#### MENUS ###
+#### MENUS ####
 # each menu is implemented as a function so that switching windows is easier
 def main_menu():
     root = tk.Tk()

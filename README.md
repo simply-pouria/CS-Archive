@@ -21,7 +21,7 @@ The Project is not so basic though...
 - [Question 7](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Question_7.py) - Generating permutations for strings
 - [Question 8](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Question_8.py) - Suffix operation calculator
 - [Question 9](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Question_9.py) - Finding a golden age with the most scientists alive
-- [Question 10](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Question_10.py) - NxN matrix determinant calculator (has known issues)
+- [Question 10](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/Question_10.py) - NxN matrix determinant calculator
 
 *if you have the repository (or just the directory) cloned on your PC, you can run all of the questions through a command line interface [here](https://github.com/simply-pouria/CS-Archive/blob/main/Basic%20Programming/RunInterface.py)*
 

@@ -25,31 +25,21 @@ def sub_matrix_generator(matrix: list, row: int, column: int) -> list:  # return
 
 
 def determinant(matrix: list) -> int:
-
+    determinant_value = 0  # this will work as a container for each step
+    matrix_size = len(matrix)
     if not is_n_n(matrix):
         raise ValueError('the provided matrix should have a nxn form')
 
     else:
-        determinant_value = 0  # this will work as a container for each step
-
-        if len(matrix) == 2:
-            # calculates the determinant of the remaining 2x2 matrix
-            return (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
-
+        if matrix_size == 1:
+            # The determinant of a 1x1 matrix is simply the value of its single entry.
+            return matrix[0][0]
         else:
-            # the naming here aligns with those in the provided problems document in LMS Canvas
-            for a0j in matrix[0]:  # iterates the first row of the matrix as indicated in the problems document
-
-                j = matrix[0].index(a0j)
-                sj = 1 if j % 2 == 0 else -1
-
+            for j in range(0,len(matrix)):  # iterates the first row of the matrix as indicated in the problems document
+                new_temp_matrix = sub_matrix_generator(matrix=matrix, row=0, column=j)
                 # calculates the determinant of the shrunk matrix and adds it to the container
-                determinant_value += sj * a0j * determinant(sub_matrix_generator(matrix=matrix,
-                                                                                 row=0,
-                                                                                 column=j))
-
-        return determinant_value
-
+                determinant_value += matrix[0][j] * ((-1)**j) * determinant(new_temp_matrix)
+            return determinant_value
 
 # for instance:
 # print(determinant([[1 , 2 , 3 , 4 ],
@@ -111,7 +101,7 @@ def interface():
 
     try:
 
-        n = int(input("// Enter the number of the equations (=number of the variables) "))
+        n = int(input("// Enter the number of the equations (=number of the variables): "))
 
         if n < 0:
             raise ValueError
@@ -121,18 +111,20 @@ def interface():
         for i in range(n):
             matrix.append([])
             for j in range(n):
-                matrix[i].append(float(input(f"// Enter the item i={i} j={j} of the variable matrix")))
+                matrix[i].append(float(input(f"// Enter the item i={i+1} j={j+1} of the variable matrix: ")))
 
         # creating the column vector and adding the items
         vector = []
         for i in range(n):
-            vector.append(float(input(f"// Enter the item {i} of the column vector")))
+            vector.append(float(input(f"// Enter the item {i+1} of the column vector: ")))
 
         answers = equation_solver(variable_matrix=matrix, column_vector=vector)
 
         print("the answers:")
         for key in answers:
-            print(f"X{key} = {answers[key]}")
+            print(f"X{key + 1} = {answers[key]}")
+
+
 
     except (ValueError, TypeError):
         print("// wrong input. (please note that the number of equations is a natural number obviously)"

@@ -1,5 +1,5 @@
 
-
+from FoxUI import cprint, clear_screen
 
 def is_n_n(matrix: list) -> bool:  # checks if the provided matrix has an n*n form
 
@@ -96,12 +96,13 @@ def equation_solver(variable_matrix: list, column_vector: list) -> dict:  # this
 
 
 def interface():
-
-    print("// Question 10: Solving Linear Equations")
+    clear_screen()
+    cprint.question("Question 10: Solving Linear Equations")
 
     try:
 
-        n = int(input("// Enter the number of the equations (=number of the variables): "))
+        # n = int(input("Enter the number of the equations (=number of the variables): "))
+        n = int(cprint.input("Enter the number of the equations (=number of the variables):"))
 
         if n < 0:
             raise ValueError
@@ -111,31 +112,30 @@ def interface():
         for i in range(n):
             matrix.append([])
             for j in range(n):
-                matrix[i].append(float(input(f"// Enter the item i={i+1} j={j+1} of the variable matrix: ")))
-
+                matrix[i].append(float(cprint.input(f"Enter the item i={i+1} j={j+1} of the variable matrix:")))
+        cprint.matrix(matrix)
+        print()
         # creating the column vector and adding the items
         vector = []
         for i in range(n):
-            vector.append(float(input(f"// Enter the item {i+1} of the column vector: ")))
-
+            vector.append(float(cprint.input(f"Enter the item {i+1} of the column vector:")))
+        cprint.matrix([[i] for i in vector])
+        print()
         answers = equation_solver(variable_matrix=matrix, column_vector=vector)
 
-        print("the answers:")
+        cprint.answer("the answers:")
         for key in answers:
-            print(f"X{key + 1} = {answers[key]}")
+            subscript = ''.join([chr(0x2080 + int(digit) + 1) for digit in str(key)])
+            cprint.answer(f"X{subscript} = {answers[key]}")
+
 
 
 
     except (ValueError, TypeError):
-        print("// wrong input. (please note that the number of equations is a natural number obviously)"
+        cprint.error("wrong input|(please note that the number of equations is a natural number obviously)"
               "(also, the variable matrix's determinant cannot be zero,"
               " as the answer would be either inconsistent or dependent, for that use a RREF calculator)")
 
 
 if __name__ == "__main__":
     interface()
-
-
-
-
-

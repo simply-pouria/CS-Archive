@@ -1,9 +1,9 @@
 from FoxUI import cprint, clear_screen
 
 from Question_10 import equation_solver
-from Question_5 import absolute_value
-from Question_9 import reverse_bubble_sort
-from Question_5 import square_root
+from Question_05 import absolute_value
+from Question_09 import reverse_bubble_sort
+from Question_05 import square_root
 
 
 # I represent lines consistently as a tuple like this (slope, constant)

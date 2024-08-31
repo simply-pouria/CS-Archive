@@ -1,7 +1,7 @@
 from FoxUI import cprint, clear_screen
 
 
-from Question_1 import prime_factorize  # this is needed from question 1
+from Question_01 import prime_factorize  # this is needed from question 1
 
 
 def lcm(numbers: list) -> int:

@@ -1,5 +1,4 @@
-
-
+from FoxUI import cprint, clear_screen
 
 # this operates a single prefix expression so the next function don't become cluttered and unreadable
 def operate(left_num: float, right_num: float, operator: str) -> float:
@@ -50,15 +49,15 @@ def prefix_expression_calculator(expression: str) -> float:
 
 
 def interface():
-
-    print("// Question 8: Prefix Expressions Evaluation")
+    clear_screen()
+    cprint.question("Question 8: Prefix Expressions Evaluation")
 
     prefix_expression = ''
 
-    print("// Enter your prefix expression character by character from left to right, enter 0 to end inputting")
+    cprint.info("Enter your prefix expression character by character from left to right, enter 0 to end inputting")
 
     while True:
-        inp = input("// Enter the operand or operator: ")
+        inp = cprint.input("Enter the operand or operator: ")
 
         if inp == '0':
             break
@@ -69,11 +68,11 @@ def interface():
 
     try:
 
-        print(f"the evaluation of the expression {prefix_expression} is:"
-              f"\n{prefix_expression_calculator(prefix_expression)}")
+        cprint.answer(f"the evaluation of the expression {prefix_expression} is:"
+              f" \n  {prefix_expression_calculator(prefix_expression)}")
 
     except (ValueError, TypeError):
-        print("// wrong prefix expression.")
+        cprint.error("wrong prefix expression.|")
 
 
 if __name__ == "__main__":

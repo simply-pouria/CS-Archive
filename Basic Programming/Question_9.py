@@ -1,7 +1,5 @@
+from FoxUI import cprint, clear_screen
 
-
-
-#
 # the following two functions are from question 7, since we need to have subsets here as well,
 # I'm not importing them because it's a little different here
 #
@@ -116,22 +114,22 @@ def golden_age_calc(world_science_history: dict) -> tuple:  # calculates the gol
 
 
 def interface():
-
-    print("// Question 9: The Golden Age")
+    clear_screen()
+    cprint.question("Question 9: The Golden Age")
     science_history = {}
 
     try:
-        print("// Enter 0 to end the inputting process, and calculate the golden age")
+        cprint.info("Enter 0 to end the inputting process, and calculate the golden age")
 
         while True:
 
-            scientist = input("// Enter the name of the scientist: ")
+            scientist = cprint.input("Enter the name of the scientist: ")
 
             if scientist == '0':
                 break
 
-            birth = int(input("// Enter their birth year: "))
-            death = int(input("// Enter their death year: "))
+            birth = int(cprint.input("Enter their birth year: "))
+            death = int(cprint.input("Enter their death year: "))
 
             if birth < 1 or death < 1:
                 raise ValueError
@@ -141,20 +139,20 @@ def interface():
         golden_age = golden_age_calc(world_science_history=science_history)
 
         if len(golden_age[1]) < 2:
-            print("unfortunately there had not been a time when two or more scientists were alive simultaneously")
+            cprint.answer("unfortunately there had not been a time when two or more scientists were alive simultaneously")
 
         else:
-            print(f"the golden age was from {golden_age[0][0]} till {golden_age[0][1]} "
+            cprint.answer(f"the golden age was from {golden_age[0][0]} till {golden_age[0][1]} "
                   f"with scientists: {golden_age[1]} being alive then")
 
     except (ValueError, TypeError):
-        print("// wrong input (note that you need to enter a natural number for the birth/death year).")
+        cprint.error("wrong input|(note that you need to enter a natural number for the birth/death year).")
 
     except KeyError:
-        print("note that birth year should be before death year, and that we need at least two scientists obviously")
+        cprint.error("note that birth year should be before death year, and that we need at least two scientists obviously")
 
     except IndexError:
-        print("the number of scientists can't be zero! you need at least two of them")
+        cprint.error("the number of scientists can't be zero! you need at least two of them")
         
 
 

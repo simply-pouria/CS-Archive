@@ -1,4 +1,4 @@
-
+from FoxUI import cprint, clear_screen
 
 
 from Question_1 import prime_factorize  # this is needed from question 1
@@ -47,9 +47,9 @@ def lcm(numbers: list) -> int:
 
 
 def interface():
-
-    print("// Question 3 - LCM")
-    print("Enter the numbers that you want the LCM of, to end inputting enter 0 to return the LCM of the numbers "
+    clear_screen()
+    cprint.question("Question 3 - LCM")
+    cprint.info("Enter the numbers that you want the LCM of, to end inputting enter 0 to return the LCM of the numbers "
           "you have entered so far")
 
     input_numbers = []
@@ -59,7 +59,7 @@ def interface():
         flag = True
         while flag:
 
-            user_input = int(input("// Enter the natural number you want the LCM of (enter 0 to end this and start "
+            user_input = int(cprint.input("Enter the natural number you want the LCM of (enter 0 to end this and start "
                                    "calculation) : "))
 
             if user_input == 0:
@@ -71,23 +71,12 @@ def interface():
         lcm_value = lcm(input_numbers)
 
     except (ValueError, TypeError, RecursionError):  # Recursion Error happens when a negative number is entered
-        print("// there is an issue with your input, please enter a natural number")
+        cprint.error("there is an issue with your input, please enter a natural number")
 
     else:
 
-        print('// the LCM is: ', lcm_value)
+        cprint.answer(f'the LCM is: {lcm_value}')
 
 
 if __name__ == "__main__":
     interface()
-
-
-
-
-
-
-
-
-
-
-

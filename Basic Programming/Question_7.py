@@ -1,4 +1,4 @@
-
+from FoxUI import cprint, clear_screen
 
 
 def permutation_generator(lst: list, start: int, end: int, permutations: list) -> list:  # this generates all n!
@@ -71,16 +71,17 @@ def subset_permutation(initial_set: list) -> list:  # returns permutations of th
 
 
 def interface():
-    print("// Question 7: Creating Strings")
+    clear_screen()
+    cprint.question("Question 7: Creating Strings")
 
     characters = []
     counter = 0
 
-    print("// You will be inputting the characters you want the permutations of, in order to end it, Enter 0")
+    cprint.info("You will be inputting the characters you want the permutations of, in order to end it, Enter 0")
 
     while True:
         counter += 1
-        character = input(f"// Enter the character {counter}: ")
+        character = cprint.input(f"Enter the character {counter}: ")
 
         if character == '0':
             break
@@ -88,7 +89,7 @@ def interface():
         characters.append(character)
 
     permutations = subset_permutation(initial_set=characters)
-    print("the permutations are:")
+    cprint.answer("the permutations are:")
 
     for permutation in permutations:
         p = ''
@@ -96,7 +97,7 @@ def interface():
         for char in permutation:
             p += char
 
-        print(p)
+        cprint.answer(p)
 
 
 if __name__ == "__main__":

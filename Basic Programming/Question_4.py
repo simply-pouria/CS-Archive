@@ -1,4 +1,4 @@
-
+from FoxUI import cprint, clear_screen
 
 
 from Question_7 import subset_generator, plain_dict
@@ -122,11 +122,11 @@ def organize(games_data: dict, teams_list: list) -> list:
 
 
 def interface():
-
-    print("// Question 4: Organizing Teams")
+    clear_screen()
+    cprint.question("Question 4: Organizing Teams")
 
     try:
-        teams = team_list(int(input("// Enter the number of the teams ")))
+        teams = team_list(int(cprint.input("Enter the number of the teams ")))
 
         # the subsets with the length of 2 will be the games held
         subsets = plain_dict(initial_set=teams)
@@ -140,7 +140,7 @@ def interface():
 
         for game in games:
 
-            game_result = int(input(f"what was the result of the game held between teams {game[0]} and {game[1]}? ("
+            game_result = int(cprint.input(f"what was the result of the game held between teams {game[0]} and {game[1]}? ("
                                     f"answer with the number of the team, or 0 if the result was a draw)"))
 
             if game_result not in [0, game[0], game[1]]:
@@ -148,15 +148,15 @@ def interface():
 
             games_data[game] = game_result
 
-        print(organize(games_data=games_data, teams_list=teams))
+        cprint.answer(organize(games_data=games_data, teams_list=teams))
 
     except (ValueError, TypeError, KeyError):
         # key error happens when user enters a negative number as the number of the teams
-        print("// wrong input, please enter a natural number instead.")
+        cprint.error("wrong input|please enter a natural number instead.")
 
     except IndexError:  # raised if the user enters a team as the winner that haven't participated in the game
 
-        print("// the winner team has to have played the game ... right?")
+        cprint.error("the winner team has to have played the game ... right?")
 
 
 if __name__ == "__main__":

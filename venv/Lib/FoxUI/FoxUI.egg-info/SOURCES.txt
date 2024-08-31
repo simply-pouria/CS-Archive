@@ -1,6 +1,0 @@
-FoxUI.py
-setup.py
-FoxUI.egg-info/PKG-INFO
-FoxUI.egg-info/SOURCES.txt
-FoxUI.egg-info/dependency_links.txt
-FoxUI.egg-info/top_level.txt

@@ -1,4 +1,3 @@
-
 from FoxUI import cprint, clear_screen
 
 def is_n_n(matrix: list) -> bool:  # checks if the provided matrix has an n*n form

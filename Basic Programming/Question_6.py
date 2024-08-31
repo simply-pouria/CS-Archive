@@ -1,5 +1,4 @@
-
-
+from FoxUI import cprint, clear_screen
 
 from Question_10 import equation_solver
 from Question_5 import absolute_value
@@ -203,22 +202,22 @@ def voronoi_diagram_vertex_finder(perpendicular_bisectors: list, border: tuple,
 
 
 def interface():
-
-    print("// Question 6: City Division")
+    clear_screen()
+    cprint.question("Question 6: City Division")
     coordinates = []
 
     try:
-        x_border = float(input("// Enter the length of the city: "))
-        y_border = float(input("// Enter the height of the city: "))
+        x_border = float(cprint.input("Enter the length of the city: "))
+        y_border = float(cprint.input("Enter the height of the city: "))
 
         for i in range(1, 4):
 
-            x = float(input(f"// Enter the x of the coordinates of the shop {i}: "))
-            y = float(input(f"// Enter the y of the coordinates of the shop {i}: "))
+            x = float(cprint.input(f"Enter the x of the coordinates of the shop {i}: "))
+            y = float(cprint.input(f"Enter the y of the coordinates of the shop {i}: "))
 
             coordinates.append((x, y))
 
-        print("the coordinates of the vertices is as followed:")
+        cprint.answer("the coordinates of the vertices is as followed:")
 
         vertices = voronoi_diagram_vertex_finder(perpendicular_bisectors=
                                                  voronoi_diagram_outlines(point_1=coordinates[0],
@@ -229,7 +228,7 @@ def interface():
                                                  p1=coordinates[0], p2=coordinates[1], p3=coordinates[2])
 
     except (ValueError, TypeError):
-        print("// wrong input, please enter a number instead.")
+        cprint.error("wrong input|please enter a number instead.")
 
 
 if __name__ == "__main__":

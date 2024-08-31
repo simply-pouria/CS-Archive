@@ -1,4 +1,4 @@
-
+from FoxUI import cprint, clear_screen
 
 
 def factorial(number: int) -> int:
@@ -52,18 +52,18 @@ def factorial_expansion(number: int) -> dict:
 
 
 def interface():
-
+    clear_screen()
     try:
-        print("// Question 2 - Factorial Expansion")
-        user_input = int(input("// Enter the natural number you want the factorial expansion of: "))
+        cprint.question("Question 2 - Factorial Expansion")
+        user_input = int(cprint.input("Enter the natural number you want the factorial expansion of: "))
 
     except (ValueError, TypeError):
-        print("// there is an issue with your input, please enter a natural number")
+        cprint.error("there is an issue with your input, please enter a natural number")
 
     else:
 
         if user_input < 1:
-            print("only natural numbers are allowed!")
+            cprint.error("only natural numbers are allowed!")
         output = ''  # this works as a container
 
         factorial_expansion_dict = factorial_expansion(user_input)
@@ -72,7 +72,7 @@ def interface():
             output += f'{factorial_expansion_dict[key]}({key}!) + '
 
         # the slicing is only here to delete the extra '+ ' at the end of the string
-        print('// the factorial expansion is: ', output[:-3])
+        cprint.answer(f'the factorial expansion is: {output[:-3]}')
 
 
 if __name__ == "__main__":

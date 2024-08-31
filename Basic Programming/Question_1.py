@@ -1,4 +1,5 @@
 
+from FoxUI import cprint, clear_screen
 
 #  I'm using the Prime Factorization by Division Method here
 
@@ -72,15 +73,15 @@ def prime_factorize(number: int, prime_factor: int = 2, prime_factors=None):
 
 
 def interface():
-
-    print("// Question 1: Prime Factorization")
+    clear_screen()
+    cprint.question("Question 1: Prime Factorization")
 
     try:
-        integer = int(input("// Enter a natural number to get it's prime factorization: "))
+        integer = int(cprint.input("Enter a natural number to get it's prime factorization: "))
         prime_factors = prime_factorize(number=integer)
 
     except (ValueError, TypeError, RecursionError):  # Recursion Error happens when a negative number is entered
-        print("// wrong input, please enter a natural number instead.")
+        cprint.error("wrong input|please enter a natural number instead.")
 
     else:
 
@@ -90,11 +91,7 @@ def interface():
 
             output += f'{prime_factor}^{prime_factors[prime_factor]} + '
 
-        print('// the prime  factorization is: ', output[:-3])  # to omit the + in the end
-
+        cprint.answer(f'the prime  factorization is: {output[:-3]}')  # to omit the + in the end
 
 if __name__ == "__main__":
     interface()
-
-
-

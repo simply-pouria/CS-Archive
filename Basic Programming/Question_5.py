@@ -1,4 +1,4 @@
-
+from FoxUI import cprint, clear_screen
 
 from Question_2 import factorial
 
@@ -125,53 +125,53 @@ def estimate_integral(interval: tuple, sub_intervals_quantity: int, func) -> flo
 
 
 def interface():
-
-    print("// Question 5: Numerical Integration")
+    clear_screen()
+    cprint.question("Question 5: Numerical Integration")
 
     try:
 
-        start_point = float(input("// Enter the start point of the interval, over which you want to integrate: "))
+        start_point = float(cprint.input("Enter the start point of the interval, over which you want to integrate: "))
 
-        end_point = float(input("// Enter the end point of the interval, over which you want to integrate: "))
+        end_point = float(cprint.input("Enter the end point of the interval, over which you want to integrate: "))
 
         if end_point <= start_point:
             raise ValueError
 
-        intervals_quantity = int(input("// Enter the the number of intervals you want the initial interval to be "
+        intervals_quantity = int(cprint.input("Enter the the number of intervals you want the initial interval to be "
                                        "divided to: (the higher the number the more precise the integral would be) "))
 
         if intervals_quantity < 1:
             raise ValueError
 
-        function = input("// Enter the function you want to integrate: (sin, square root, polynomial) ").lower()
+        function = cprint.input("Enter the function you want to integrate: (sin, square root, polynomial) ").lower()
 
         match function:
 
             case 'sin':
-                print("// the integral is approximately:")
-                print(estimate_integral(interval=(start_point, end_point),
+                cprint.answer("the integral is approximately:")
+                cprint.answer(estimate_integral(interval=(start_point, end_point),
                                         sub_intervals_quantity=intervals_quantity,
                                         func=sin))
 
             case 'square root':
-                print(estimate_integral(interval=(start_point, end_point),
+                cprint.answer(estimate_integral(interval=(start_point, end_point),
                                         sub_intervals_quantity=intervals_quantity,
                                         func=square_root))
 
             case 'polynomial':
-                print("// the integral is approximately: ")
-                degree = int(input("// enter the degree of the polynomial "))
+                cprint.answer("the integral is approximately: ")
+                degree = int(cprint.input("enter the degree of the polynomial "))
                 coefficients = []
 
                 for i in range(degree+1):
 
-                    coefficient = float(input(f"// what is the coefficient of x^{i} "))
+                    coefficient = float(cprint.input(f"what is the coefficient of x^{i} "))
                     coefficients.append(coefficient)
 
                 polynomial_instance = Polynomial(degree, coefficients)
 
-                print("// the integral is approximately:")
-                print(estimate_integral(interval=(start_point, end_point),
+                cprint.answer("the integral is approximately:")
+                cprint.answer(estimate_integral(interval=(start_point, end_point),
                                         sub_intervals_quantity=intervals_quantity,
                                         func=polynomial_instance.find_y))
 
@@ -179,7 +179,7 @@ def interface():
                 raise ValueError
 
     except (ValueError, TypeError):
-        print("// wrong input\n(note that the start point should be smaller than the end point, number of integrals"
+        cprint.error("wrong input|(note that the start point should be smaller than the end point, number of integrals"
               " should be a natural number, and you should enter the name of the function you want to integrate).")
 
 

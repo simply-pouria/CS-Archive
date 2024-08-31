@@ -1,4 +1,4 @@
-
+from FoxUI import cprint, clear_screen
 
 from Question_1 import interface as interface_1
 from Question_2 import interface as interface_2
@@ -11,16 +11,30 @@ from Question_8 import interface as interface_8
 from Question_9 import interface as interface_9
 from Question_10 import interface as interface_10
 
+clear_screen()
 
-print("// Welcome!")
+qlist = ["01-Prime Factorization",
+         "02-Factorial Expansion",
+         "03-Calculating LCM",
+         "04-Sorting teams according to the results of the games",
+         "05-Calculating Integral using trapezoid method",
+         "06-Dividing the city in the most optimized way (Voronoi Diagram modeling)",
+         "07-Generating permutations for strings",
+         "08-Suffix operation calculator",
+         "09-Finding a golden age with the most scientists alive",
+         "10-Solving an N×N system of linear equations using determinants",
+         "Exit"]
+
 
 while True:
 
     try:
-        question = int(input("// Enter the number of the question (1-10) to enter it's solution : "))
+        cprint.info("Main menu")
+        cprint.list(qlist)
+        question = int(cprint.input("Enter the number of the question (1-10) to enter it's solution : "))
 
     except (ValueError, TypeError):
-        print("// wrong input, please enter a natural number instead.")
+        cprint.error("wrong input|please enter a natural number instead.")
 
     else:
 
@@ -57,9 +71,12 @@ while True:
                 case 10:
                     interface_10()
 
+                case 0:
+                    exit()
+
                 case _:
                     print("the number of questions is from 1 to 10")
-
+            cprint.conti("Press Enter to return to the Main menu...")
         # potential errors ARE caught in the interface function of each question,
         # however this is just so that the program wouldn't crash if something goes under the radar.
         except Exception as error:

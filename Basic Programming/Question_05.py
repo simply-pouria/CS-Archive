@@ -1,6 +1,6 @@
 from FoxUI import cprint, clear_screen
 
-from Question_2 import factorial
+from Question_02 import factorial
 
 
 def power(x: int | float, n: int) -> float:  # because ** operator is prohibited

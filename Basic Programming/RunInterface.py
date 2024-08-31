@@ -1,14 +1,14 @@
 from FoxUI import cprint, clear_screen
 
-from Question_1 import interface as interface_1
-from Question_2 import interface as interface_2
-from Question_3 import interface as interface_3
-from Question_4 import interface as interface_4
-from Question_5 import interface as interface_5
-from Question_6 import interface as interface_6
-from Question_7 import interface as interface_7
-from Question_8 import interface as interface_8
-from Question_9 import interface as interface_9
+from Question_01 import interface as interface_1
+from Question_02 import interface as interface_2
+from Question_03 import interface as interface_3
+from Question_04 import interface as interface_4
+from Question_05 import interface as interface_5
+from Question_06 import interface as interface_6
+from Question_07 import interface as interface_7
+from Question_08 import interface as interface_8
+from Question_09 import interface as interface_9
 from Question_10 import interface as interface_10
 
 clear_screen()

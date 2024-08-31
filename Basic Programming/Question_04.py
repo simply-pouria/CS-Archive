@@ -1,7 +1,7 @@
 from FoxUI import cprint, clear_screen
 
 
-from Question_7 import subset_generator, plain_dict
+from Question_07 import subset_generator, plain_dict
 
 
 def bubble_sort(lst: list):  # an ascending sort function is needed in the interface function,

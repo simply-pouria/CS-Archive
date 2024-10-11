@@ -5,6 +5,7 @@ This repository serves as an archive for my university projects and other resour
 List of the courses:
 - [Basic Programming](https://github.com/simply-pouria/CS-Archive?tab=readme-ov-file#basic-program)
 - [Advanced Programming](https://github.com/simply-pouria/CS-Archive?tab=readme-ov-file#advanced-programming)
+- [Data Structures And Algorithms]()
 
 ## Basic Programming 
 The Project is not so basic though... 
@@ -54,3 +55,10 @@ A Pandas Dataframe exercise that reads texts and manages them in data frames, an
 [Assignment Document](https://github.com/simply-pouria/CS-Archive/blob/main/Advanced%20Programming/AP%20-%20Project%204/AP-project-4-notes.pdf)(exercises 2 & 3)
 
 [Project Directory](https://github.com/simply-pouria/CS-Archive/tree/main/Advanced%20Programming/AP%20-%20Project%204)
+
+## Data Structures And Algorithms
+The Textbook here is *Introduction to Algorithms (CLRS)*
+
+### Chapter 2
+[InsertionSort]()
+

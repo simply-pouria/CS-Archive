@@ -5,7 +5,7 @@ This repository serves as an archive for my university projects and other resour
 List of the courses:
 - [Basic Programming](https://github.com/simply-pouria/CS-Archive?tab=readme-ov-file#basic-program)
 - [Advanced Programming](https://github.com/simply-pouria/CS-Archive?tab=readme-ov-file#advanced-programming)
-- [Data Structures And Algorithms](https://github.com/simply-pouria/CS-Archive/blob/main/Advanced%20Programming/AP%20-%20Project%202/AP-project-2-notes.pdf)
+- [Data Structures And Algorithms](https://github.com/simply-pouria/CS-Archive?tab=readme-ov-file#data-structures-and-algorithms)
 
 
 ## Basic Programming 

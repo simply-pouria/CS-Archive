@@ -16,7 +16,7 @@ print(arr)
 
 
 # Early Exit Optimization for already sorted arrays
-def bubble_sort(arr:list):
+def bubble_sort_optimized(arr:list):
     l = len(arr)
     for i in range(l-1):
         swapped = False

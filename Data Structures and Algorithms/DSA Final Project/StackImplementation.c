@@ -9,7 +9,7 @@ typedef struct Node {
 } Node;
 
 typedef struct {
-    Node* head;           // Points to the first node
+    Node* head;          // Points to the first node
     int size;             // Number of elements in list
 } CircularList;
 
@@ -25,8 +25,8 @@ int main() {
     CircularList circular_list = {NULL, 0}; // Initialize circular list
 
     // Example from lecture notes, k=2, n=9
-    int n = 9;  // Number of people
-    int k = 2;  // Step count for elimination
+    int n = 10;  // Number of people
+    int k = 3;  // Step count for elimination
     for (int i = 1; i <= n; i++) {
         insert_tail(&circular_list, i);
     }
@@ -158,7 +158,7 @@ void search(CircularList* circular_list, int search_value) {
 
 // Print the list
 void print_list(CircularList* circular_list) {
-    if (circular_list->head == NULL) { /
+    if (circular_list->head == NULL) {
         printf("List is empty.\n");
         return;
     }

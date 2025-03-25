@@ -62,13 +62,13 @@ The textbook used here is *Introduction to Algorithms (CLRS)*
 
 Here are my answers to Course Assignments
 
-[Assignment 2]() (in English)
+[Assignment 2](https://github.com/simply-pouria/CS-Archive/blob/main/Algorithm%20Design%20and%20Data%20Structures/DSA_EXC2.pdf) (in English)
 
-[Assignment 3]() (in English)
+[Assignment 3](https://github.com/simply-pouria/CS-Archive/blob/main/Algorithm%20Design%20and%20Data%20Structures/DSA_EXC3.pdf) (in English)
 
-[Assignment 4]() (in English)
+[Assignment 4](https://github.com/simply-pouria/CS-Archive/blob/main/Algorithm%20Design%20and%20Data%20Structures/DSA_EXC4.pdf) (in English)
 
-[Assignment 1]() (in Persian)
+[Assignment 1](https://github.com/simply-pouria/CS-Archive/blob/main/Algorithm%20Design%20and%20Data%20Structures/DSA_EXC1.pdf) (in Persian)
 
 
 ### Chapter 2

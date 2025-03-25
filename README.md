@@ -60,6 +60,18 @@ A Pandas Dataframe exercise that reads texts and manages them in data frames, an
 ## Data Structures And Algorithms
 The textbook used here is *Introduction to Algorithms (CLRS)*
 
+Here are my answers to Course Assignments
+
+[Assignment 2]() (in English)
+
+[Assignment 3]() (in English)
+
+[Assignment 4]() (in English)
+
+[Assignment 1]() (in Persian)
+
+
 ### Chapter 2
 [InsertionSort](https://github.com/simply-pouria/CS-Archive/blob/main/Data%20Structures%20and%20Algorithms/InsertionSort.py)
+
 [BubbleSort](https://github.com/simply-pouria/CS-Archive/blob/main/Data%20Structures%20and%20Algorithms/BubbleSort.py)

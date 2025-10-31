@@ -15,7 +15,7 @@ int main() {
     enqueue(max_queue, coins[0]);
     enqueue(max_queue, coins[1]);
 
-    printf("The Chosen Coins Are:\n");
+    printf( "The Chosen Coins Are:\n");
     printf("Coin %d\n", coins[1]);
 
     for (int i=2; i <= n; i++) {
